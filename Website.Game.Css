@@ -1,6 +1,18 @@
-.background {
-    width: 300%;
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url(background.jpg);
+    background-size: cover;
+    background-position: center;
     height: 100vh;
-    position: center;
-    background-image: url(pngtree-tree-beautiful-fantasy-illustration-background-image_2037784.jpg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff; /* Tekstkleur aanpassen aan de achtergrondafbeelding */
+    font-family: Arial, sans-serif;
 }
+
+h1 {
+    font-size: 2em;
+}
+
