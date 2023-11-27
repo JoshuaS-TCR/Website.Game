@@ -1,1 +1,6 @@
-
+.background {
+    width: 300%;
+    height: 100vh;
+    position: center;
+    background-image: url(pngtree-tree-beautiful-fantasy-illustration-background-image_2037784.jpg);
+}
