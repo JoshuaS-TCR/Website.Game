@@ -14,5 +14,11 @@ body {
 
 h1 {
     font-size: 2em;
+    position: center;
+}
+
+p {
+    font-size: 1em;
+    position: center;
 }
 
