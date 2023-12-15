@@ -103,6 +103,14 @@ footer {
       background-color: #575252;
     }
 
+    .footermenuimg {
+      width: 100%;
+      height: 100px;
+      background-image: url('logo-techniek-college.jpg');
+      background-repeat: no-repeat;
+      background-size: contain;
+
+    }
 
 
 
