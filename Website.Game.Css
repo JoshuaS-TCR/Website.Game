@@ -61,6 +61,7 @@ li a:hover {
 }
 
 
+
 footer {
   text-align: center;
   padding: 10px;
@@ -73,14 +74,14 @@ footer {
 
     /* Stijl voor de dropdowns */
     .dropdown {
-      position: relative;
+      position: initial;
       display: inline-block;
     }
 
     .dropdown-content {
       display: none;
       position: absolute;
-      background-color: #504b4b;
+      background-color: #665f5f;
       box-shadow: 0 8px 16px rgba(0,0,0,0.2);
       min-width: 160px;
       z-index: 1;
@@ -101,3 +102,8 @@ footer {
     .dropdown-content a:hover {
       background-color: #575252;
     }
+
+
+
+
+    
