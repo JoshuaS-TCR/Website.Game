@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>our Website</title>
+  <link rel="stylesheet" href="test.css">
+<br>
+<br>
+</head>
+<body>
+
+<!-- De Navbar HTML-code -->
+<div class="Navbar">
+  <a href="#home">Home</a>
+  <div class="dropdown">
+    <a href="#" class="dropbtn">Dropdown 1</a>
+    <div class="dropdown-content">
+      <a href="#sub1">Submenu 1</a>
+      <a href="#sub2">Submenu 2</a>
+      <a href="#sub3">Submenu 3</a>
+    </div>
+  </div>
+  <div class="dropdown">
+    <a href="#" class="dropbtn">Dropdown 2</a>
+    <div class="dropdown-content">
+      <a href="#sub4">Submenu 4</a>
+      <a href="#sub5">Submenu 5</a>
+      <a href="#sub6">Submenu 6</a>
+    </div>
+  </div>
+  <div class="dropdown">
+    <a href="#" class="dropbtn">Dropdown 3</a>
+    <div class="dropdown-content">
+      <a href="#sub7">Submenu 7</a>
+      <a href="#sub8">Submenu 8</a>
+      <a href="#sub9">Submenu 9</a>
+    </div>
+  </div>
+</div>
+
+<div>
+  <h1>Welkom op onze website!</h1>
+  <p>Donate to play / play to donate</p>
+</div>
+
+<footer>
+  <p>Door zion, Joshua en Joaquim</p>
+  <p><a href="https://www.tcr.nl/" target="_blank">TCR Website</a></p>
+</footer>
+
+</body>
+</html>
