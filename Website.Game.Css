@@ -9,20 +9,19 @@ body {
 }
 
 h1 {
-    font-size: 2em;
+    font-size: 40px;
     color: white;
     text-align: center;
-
 }
 
 h2 {
-  font-size: 2em;
+  font-size: 30px;
   color: white;
   text-align: center;
 }
 
 p {
-    font-size: 1.2em;
+    font-size: 21px;
     color: white;
     text-align: center;
 }
