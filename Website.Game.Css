@@ -115,9 +115,12 @@ footer {
       height: 40px;
     }
 
-    #unicefImage {
-      width: 200px;
-      height: auto;
-      display: block;
-      margin: auto;
-  }
+
+img {
+  height: 40px;
+}
+
+.unicef {
+  size: 100px;
+}
+
