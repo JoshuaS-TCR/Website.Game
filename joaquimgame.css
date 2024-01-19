@@ -1,0 +1,12 @@
+body {
+    text-align: center;
+    background-image: url(background.jpg);
+}
+
+#board {
+    background-color: black;
+    border-top: 10px solid skyblue;
+    border-left: 10px solid skyblue;
+    border-right: 10px solid skyblue;
+}
+

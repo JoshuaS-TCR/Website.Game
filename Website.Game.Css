@@ -114,13 +114,8 @@ footer {
     #instaimg {
       height: 40px;
     }
-
-
-img {
-  height: 40px;
-}
-
-.unicef {
-  size: 100px;
-}
-
+    
+    #unicefImage {
+      size: 100px;
+    }
+    
