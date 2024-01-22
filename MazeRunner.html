@@ -1,6 +1,6 @@
 <html>
     <head>
-            
+
         <style>
             html, body {
                 margin: 0px;
@@ -14,6 +14,11 @@
                 font-size: 0px;
                 text-align: left;
             }
+               #startButton {
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+        }
 
             .button {
                 box-sizing: border-box;
@@ -60,7 +65,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     </head>
     <body>
-        
+
         <br>
         <canvas id="canvas2d"></canvas>
         <br>
@@ -120,16 +125,44 @@
         </select>
         <br>
         <br>
-        
+
         <div id="controls">Controls: WASD or arrow keys to move. Space, Z, or X to shoot.</div>
+        <button id="startButton">Start Game</button>
+    <p id="score">Score: 0</p>
+
+    <script>
+        var score = 1; // Start met 1
+
+        document.getElementById("startButton").addEventListener("click", function() {
+            alert("De game begint nu!");
+            // Hier kun je verdere logica toevoegen om naar het eigenlijke spel te gaan
+
+            // Voeg een interval toe om de score elke 2,5 seconden met 10 te verhogen
+            setInterval(function() {
+                score += 10;
+                updateScore();
+            }, 2500);
+        });
+
+        function updateScore() {
+            document.getElementById("score").textContent = "Score: " + score;
+        }
+    </script>
         <br>
         <h2>Maze Runner</h2>
-        
+
 <img src="maze.gif" alt="The Maze" style="width:177px;height:150px;">
         <br>
         <br>
-        
-     
+
+
+        <audio controls autoplay>
+            <source src="skyfall.unknown" type="audio/ogg">
+            <source src="skyfall.unknown" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+          
+
         <br>
 
         <script src="script.js"></script>
