@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Canvas Game</title>
+    <style>
+        canvas {
+            border: 1px solid #000;
+            display: block;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="gameCanvas" width="400" height="400"></canvas>
+
+    <script>
+        // Get the canvas and context
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Initialize player position
+        let playerX = canvas.width / 2 - 25;
+        let playerY = canvas.height / 2 - 25;
+
+        // Function to draw the player
+        function drawPlayer() {
+            ctx.fillStyle = '#00F';
+            ctx.fillRect(playerX, playerY, 50, 50);
+        }
+
+        // Function to clear the canvas
+        function clearCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+
+        // Function to update the game state
+        function update() {
+            clearCanvas();
+            drawPlayer();
+        }
+
+        // Event listener for keyboard input
+        window.addEventListener('keydown', (event) => {
+            switch (event.key) {
+                case 'ArrowLeft':
+                    playerX -= 10;
+                    break;
+                case 'ArrowRight':
+                    playerX += 10;
+                    break;
+                case 'ArrowUp':
+                    playerY -= 10;
+                    break;
+                case 'ArrowDown':
+                    playerY += 10;
+                    break;
+            }
+
+            // Make sure the player stays within the canvas boundaries
+            playerX = Math.max(0, Math.min(canvas.width - 50, playerX));
+            playerY = Math.max(0, Math.min(canvas.height - 50, playerY));
+
+            update();
+        });
+
+        // Initial draw
+        update();
+    </script>
+</body>
+</html>
