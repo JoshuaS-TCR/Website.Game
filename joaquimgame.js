@@ -1,13 +1,13 @@
-//board
+//bord
 let board;
 let boardWidth = 500;
 let boardHeight = 500;
 let context;
 
-//players
+//speler
 let playerWidth = 70;
 let playerHeight = 10;
-let playerVelocityX = 20; //moves 20 pixels each time
+let playerVelocityX = 20; //elke keer 20 pixels verplaatst
 
 let player = {
     x: boardWidth / 2 - playerWidth / 2,
@@ -41,7 +41,7 @@ let blockRows = 3; //voegt elke keer meer blokken hoe verder je komt
 let blockMaxRows = 10; //limiet aan hoeveel rijen er mogen zijn
 let blockCount = 0;
 
-//start blocks top corner left
+//startblokken bovenhoek links
 let blockX = 15;
 let blockY = 45;
 
@@ -54,72 +54,72 @@ window.onload = function() {
     board.width = boardWidth;
     context = board.getContext("2d");
 
-    //draw initial player
+    //beginspeler tekenen
     context.fillStyle="skyblue";
     context.fillRect(player.x, player.y, player.width, player.height);
 
     requestAnimationFrame(update);
     document.addEventListener("keydown", movePlayer);
 
-    //create blocks
+    //blokken maken
     createBlocks();
 }
 
 function update() {
     requestAnimationFrame(update);
-    //stop drawing
+    //stoppen met tekenen
     if (gameOver) {
         return;
     }
     context.clearRect(0, 0, board.width, board.height);
 
-    // player
+    // speler
     context.fillStyle = "blue";
     context.fillRect(player.x, player.y, player.width, player.height);
 
-    // ball
+    // bal
     context.fillStyle = "white";
     ball.x += ball.velocityX;
     ball.y += ball.velocityY;
     context.fillRect(ball.x, ball.y, ball.width, ball.height);
 
-    //bounce the ball off player paddle
+    //stuiter de bal van de spelerspeddel
     if (topCollision(ball, player) || bottomCollision(ball, player)) {
-        ball.velocityY *= -1;   // flip y direction up or down
+        ball.velocityY *= -1;   //draai de y-richting omhoog of omlaag
     }
     else if (leftCollision(ball, player) || rightCollision(ball, player)) {
-        ball.velocityX *= -1;   // flip x direction left or right
+        ball.velocityX *= -1;   //draai de x-richting naar links of rechts
     }
 
     if (ball.y <= 0) { 
-        // if ball touches top of canvas
-        ball.velocityY *= -1; //reverse direction
+        //als de bal de bovenkant van het canvas raakt
+        ball.velocityY *= -1; //tegengestelde richting
     }
     else if (ball.x <= 0 || (ball.x + ball.width >= boardWidth)) {
-        // if ball touches left or right of canvas
-        ball.velocityX *= -1; //reverse direction
+        //als de bal links of rechts het canvas raakt
+        ball.velocityX *= -1; //tegengestelde richting
     }
     else if (ball.y + ball.height >= boardHeight) {
-        // if ball touches bottom of canvas
+        //als de bal de onderkant van het canvas raakt
         context.font = "20px sans-serif";
         context.fillText("Game Over: Press 'Space' to Restart", 80, 400);
         gameOver = true;
     }
 
-    //blocks
-    context.fillStyle = "skyblue";
+    //blokken
+    Style = "skyblue";
     for (let i = 0; i < blockArray.length; i++) {
         let block = blockArray[i];
         if (!block.break) {
             if (topCollision(ball, block) || bottomCollision(ball, block)) {
-                block.break = true;     // block is broken
-                ball.velocityY *= -1;   // flip y direction up or down
+                block.break = true;     // blok is kapot
+                ball.velocityY *= -1;   //draai de y-richting omhoog of omlaag
                 score += 100;
                 blockCount -= 1;
             }
             else if (leftCollision(ball, block) || rightCollision(ball, block)) {
-                block.break = true;     // block is broken
-                ball.velocityX *= -1;   // flip x direction left or right
+                block.break = true;     // blok is kapot
+                ball.velocityX *= -1;   //draai de x-richting naar links of rechts
                 score += 100;
                 blockCount -= 1;
             }
@@ -127,9 +127,9 @@ function update() {
         }
     }
 
-    //next level
+    //volgende level
     if (blockCount == 0) {
-        score += 100*blockRows*blockColumns; //bonus points :)
+        score += 100*blockRows*blockColumns; //bonus punten :)
         blockRows = Math.min(blockRows + 1, blockMaxRows);
         createBlocks();
     }
@@ -152,7 +152,7 @@ function movePlayer(e) {
         return;
     }
     if (e.code == "ArrowLeft") {
-        // player.x -= player.velocityX;
+        //speler.x -= speler.velocityX;
         let nextplayerX = player.x - player.velocityX;
         if (!outOfBounds(nextplayerX)) {
             player.x = nextplayerX;
@@ -163,40 +163,40 @@ function movePlayer(e) {
         if (!outOfBounds(nextplayerX)) {
             player.x = nextplayerX;
         }
-        // player.x += player.velocityX;    
+        // speler.x += speler.velocityX; 
     }
 }
 
 function detectCollision(a, b) {
-    return a.x < b.x + b.width &&   //a's top left corner doesn't reach b's top right corner
-           a.x + a.width > b.x &&   //a's top right corner passes b's top left corner
-           a.y < b.y + b.height &&  //a's top left corner doesn't reach b's bottom left corner
-           a.y + a.height > b.y;    //a's bottom left corner passes b's top left corner
+    return a.x < b.x + b.width &&   //de linkerbovenhoek van a bereikt de rechterbovenhoek van b niet
+           a.x + a.width > b.x &&   //de rechterbovenhoek van a passeert de linkerbovenhoek van b
+           a.y < b.y + b.height &&  //de linkerbovenhoek van a bereikt de linkeronderhoek van b niet
+           a.y + a.height > b.y;    //de linkerbenedenhoek van a passeert de linkerbovenhoek van b
 }
 
-function topCollision(ball, block) { //a is above b (ball is above block)
+function topCollision(ball, block) { //a is boven b (bal ligt boven blok)
     return detectCollision(ball, block) && (ball.y + ball.height) >= block.y;
 }
 
-function bottomCollision(ball, block) { //a is above b (ball is below block)
+function bottomCollision(ball, block) { //a is boven b (bal bevindt zich onder blok)
     return detectCollision(ball, block) && (block.y + block.height) >= ball.y;
 }
 
-function leftCollision(ball, block) { //a is left of b (ball is left of block)
+function leftCollision(ball, block) { //a bevindt zich links van b (bal bevindt zich links van blok)
     return detectCollision(ball, block) && (ball.x + ball.width) >= block.x;
 }
 
-function rightCollision(ball, block) { //a is right of b (ball is right of block)
+function rightCollision(ball, block) { //a staat rechts van b (bal ligt rechts van blok)
     return detectCollision(ball, block) && (block.x + block.width) >= ball.x;
 }
 
 function createBlocks() {
-    blockArray = []; //clear blockArray
+    blockArray = []; //wis blockArray
     for (let c = 0; c < blockColumns; c++) {
         for (let r = 0; r < blockRows; r++) {
             let block = {
-                x : blockX + c*blockWidth + c*10, //c*10 space 10 pixels apart columns
-                y : blockY + r*blockHeight + r*10, //r*10 space 10 pixels apart rows
+                x : blockX + c*blockWidth + c*10, //c*10 kolommen met een tussenruimte van 10 pixels
+                y : blockY + r*blockHeight + r*10, //r*10 rijen met een afstand van 10 pixels uit elkaar
                 width : blockWidth,
                 height : blockHeight,
                 break : false
