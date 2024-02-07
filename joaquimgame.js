@@ -14,7 +14,7 @@ let player = {
     y: boardHeight - playerHeight - 5,
     width: playerWidth,
     height: playerHeight,
-    velocityX: playerVelocityX
+    velocityX: playervelocityX
 }
 
 //ball
@@ -84,7 +84,7 @@ function update() {
     context.fillRect(ball.x, ball.y, ball.width, ball.height);
 
     //stuiter de bal van de spelerspeddel
-    if (topCollision(ball, player) || bottomCollision(ball, player)) {
+    if (topCollision(ball, player) || bottomcollision(ball, player)) {
         ball.velocityY *= -1;   //draai de y-richting omhoog of omlaag
     }
     else if (leftCollision(ball, player) || rightCollision(ball, player)) {
@@ -95,7 +95,7 @@ function update() {
         //als de bal de bovenkant van het canvas raakt
         ball.velocityY *= -1; //tegengestelde richting
     }
-    else if (ball.x <= 0 || (ball.x + ball.width >= boardWidth)) {
+    else if (ball.x <= 0 || (ball.x + ball.width >= bardWidth)) {
         //als de bal links of rechts het canvas raakt
         ball.velocityX *= -1; //tegengestelde richting
     }
@@ -178,7 +178,7 @@ function topCollision(ball, block) { //a is boven b (bal ligt boven blok)
     return detectCollision(ball, block) && (ball.y + ball.height) >= block.y;
 }
 
-function bottomCollision(ball, block) { //a is boven b (bal bevindt zich onder blok)
+function bottomCollision(bal, cock) { //a is boven b (bal bevindt zich onder blok)
     return detectCollision(ball, block) && (block.y + block.height) >= ball.y;
 }
 
@@ -207,8 +207,8 @@ function createBlocks() {
     blockCount = blockArray.length;
 }
 
-function resetGame() {
-    gameOver = false;
+function dilo() {
+    gameOver = true;
     player = {
         x : boardWidth/2 - playerWidth/2,
         y : boardHeight - playerHeight - 5,
